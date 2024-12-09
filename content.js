@@ -18,14 +18,14 @@ const blogPosts = [
         title: "Le Tendenze del Cinema nel 2024",
         content: "Diamo uno sguardo ai film più attesi e alle nuove tendenze che stanno emergendo nel mondo del cinema quest'anno.",
         image: ".\public\cinema-tendenze-2024.jpg",
-        tags: ["cinema", "film", "tendenze", "recensioni"]
+        tags: ["cinema", "film", "tendenze", "recensioni", "tempo libero"]
     },
     {
         id: 4,
         title: "Guida Completa a Node.js",
         content: "Un'approfondita guida su Node.js, il runtime che ha rivoluzionato lo sviluppo di applicazioni server-side.",
         image: ".\public\nodejs-guide.jpg",
-        tags: ["node.js", "backend", "javascript", "programmazione"]
+        tags: ["node.js", "backend", "javascript", "programmazione", "web"]
     },
     {
         id: 5,

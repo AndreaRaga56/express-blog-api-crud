@@ -1,9 +1,14 @@
 import blogPosts from "../content.js";
 
 function index(req, res) {
+    const filterTag = req.query.tags;
+    let postDaMostrare =  blogPosts;
+    if (filterTag!==undefined){
+        postDaMostrare = blogPosts.filter((curElem, i)=>(blogPosts[i].tags.includes(filterTag)));
+    }    
     const bacheca = {
-        blogPosts,
-        tot: blogPosts.length
+        blogPosts: postDaMostrare,
+        tot: postDaMostrare.length
     };
     res.json(bacheca);
 }
