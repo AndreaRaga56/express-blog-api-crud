@@ -21,7 +21,7 @@ function show(req, res) {
             answer = blogPosts[i];
         }
     }
-
+    
     if (!isNaN(answer)) {
         res.sendStatus(404);
     }
@@ -49,11 +49,7 @@ function destroy(req, res) {
         }
     }
     if (isNaN(indexDaEliminare)) {
-        res.status(404);
-        return res.json({
-            error: "Not Found",
-            message: "Post non trovato"
-        });
+        res.sendStatus(404);
     } else {
         blogPosts.splice(indexDaEliminare, 1);
         // res.json(blogPosts)
