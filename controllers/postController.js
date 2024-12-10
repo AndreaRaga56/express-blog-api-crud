@@ -23,11 +23,7 @@ function show(req, res) {
     }
 
     if (!isNaN(answer)) {
-        res.status(404);
-        return res.json({
-            error: "Not Found",
-            message: "Post non trovato"
-        });
+        res.sendStatus(404);
     }
     res.json(answer);
 };
