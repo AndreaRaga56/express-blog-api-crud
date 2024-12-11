@@ -2,6 +2,7 @@
 import express from 'express';
 const app = express();
 const port = 3333;
+app.use(express.json());
 
 //Cartelle pubblihe
 app.use(express.static("public"));
