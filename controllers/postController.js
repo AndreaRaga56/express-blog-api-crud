@@ -29,11 +29,14 @@ function show(req, res) {
 
 function store(req, res) {
     let newPost = req.body;
+    // console.log(newPost) Senza ID
     newPost = {
         id: blogPosts[blogPosts.length - 1].id + 1,
         ...newPost
     };
+    // console.log(newPost) Con ID
     blogPosts.push(newPost);
+
     // console.log(blogPosts)
     ////////////////////////////////////////////// Esempio json di nuovo Post
     // {
@@ -42,11 +45,33 @@ function store(req, res) {
     //     "image": "fotografia-base.jpg",
     //     "tags": ["fotografia", "principianti", "tecniche", "arte"]
     // }
+
     res.json("Hai creato un nuovo elemento")
 };
 
 function update(req, res) {
-    res.json("Hai modificato interamente un elemento")
+    let postUpdated = req.body;
+    const postId = parseInt(req.params.id);
+    postUpdated = {
+        id: postId,
+        ...postUpdated
+    };
+
+    let flag = false;
+    for (let i = 0; i < blogPosts.length; i++) {
+        // console.log(blogPosts[i].id, postId)
+        if (blogPosts[i].id === postId) {
+            blogPosts[i]=postUpdated;
+            // console.log(blogPosts[i])
+            flag = true
+        }
+    }
+    // console.log(blogPosts)
+    if (flag === false) {
+        res.sendStatus(404);
+    } else {
+        res.json(postUpdated);
+    }
 };
 
 function modify(req, res) {
