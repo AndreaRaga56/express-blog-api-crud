@@ -20,8 +20,7 @@ function show(req, res) {
         if (blogPosts[i].id === postId) {
             answer = blogPosts[i];
         }
-    }
-    
+    }    
     if (!isNaN(answer)) {
         res.sendStatus(404);
     }
