@@ -19,11 +19,10 @@ function show(req, res) {
     for (let i = 0; i < blogPosts.length; i++) {
         if (blogPosts[i].id === postId) {
             answer = blogPosts[i];
+            break
         }
     }
-    if (!isNaN(answer)) {
-        res.sendStatus(404);
-    }
+
     res.json(answer);
 };
 
@@ -57,67 +56,55 @@ function update(req, res) {
         ...postUpdated
     };
 
-    let flag = false;
     for (let i = 0; i < blogPosts.length; i++) {
         // console.log(blogPosts[i].id, postId)
         if (blogPosts[i].id === postId) {
-            blogPosts[i]=postUpdated;
+            blogPosts[i] = postUpdated;
             // console.log(blogPosts[i])
-            flag = true
+            break
         }
     }
-    // console.log(blogPosts)
-    if (flag === false) {
-        res.sendStatus(404);
-    } else {
-        res.json(postUpdated);
-    }
+    console.log(blogPosts)
+    res.json(postUpdated);
+
 };
 
 function modify(req, res) {
     let postUpdated = req.body;
     const postId = parseInt(req.params.id);
-    let flag = false;
     for (let i = 0; i < blogPosts.length; i++) {
         // console.log(blogPosts[i].id, postId)
         if (blogPosts[i].id === postId) {
-            if(postUpdated.title!=undefined){
-                blogPosts[i].title=postUpdated.title;
+            if (postUpdated.title != undefined) {
+                blogPosts[i].title = postUpdated.title;
             }
-            if(postUpdated.content!=undefined){
-                blogPosts[i].content=postUpdated.content;
+            if (postUpdated.content != undefined) {
+                blogPosts[i].content = postUpdated.content;
             }
-            if(postUpdated.image!=undefined){
-                blogPosts[i].image=postUpdated.image;
+            if (postUpdated.image != undefined) {
+                blogPosts[i].image = postUpdated.image;
             }
-            if(postUpdated.tags!=undefined){
-                blogPosts[i].tags=postUpdated.tags;
+            if (postUpdated.tags != undefined) {
+                blogPosts[i].tags = postUpdated.tags;
             }
             // console.log(blogPosts[i]);
-            flag = true
+            break
         }
     }
-    if (flag === false) {
-        res.sendStatus(404);
-    } else {
-        res.json(postUpdated);
-    }
+    res.json(postUpdated);
 };
 
 function destroy(req, res) {
     const postId = parseInt(req.params.id);
-    let indexDaEliminare = "Default";
+    let indexDaEliminare;
     for (let i = 0; i < blogPosts.length; i++) {
         if (blogPosts[i].id === postId) {
             indexDaEliminare = i;
+            break
         }
     }
-    if (isNaN(indexDaEliminare)) {
-        res.sendStatus(404);
-    } else {
-        blogPosts.splice(indexDaEliminare, 1);
-        // res.json(blogPosts)
-    }
+    blogPosts.splice(indexDaEliminare, 1);
+    // res.json(blogPosts)
 };
 
 export default { index, show, store, update, modify, destroy };
