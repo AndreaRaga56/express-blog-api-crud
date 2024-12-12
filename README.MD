@@ -33,3 +33,9 @@ Ripetiamo il procedimento per la rotta di Update, in modo da avere la possibilit
 :stelle: Bonus
 - Quelli del giorno prima, se non già fatti
 - In Update, controllare se il parametro si riferisce ad un post esistente, in caso contrario, rispondere con uno stato 404 e un messaggio d’errore, sempre in formato JSON.
+
+
+Esercizio 6/12
+Dopo aver completato tutte le operazioni CRUD, completiamo le nostre API inserendo un middleware per la gestione delle rotte non registrate e uno per la gestione degli errori.
+- Se viene chiamato un endpoint con parametro inesistente, un middleware dovrà rispondere un messaggio e uno status appropriato.
+- Se viene generato un errore, un middleware si occuperà di rispondere con un messaggio e uno status appropriato.

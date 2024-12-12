@@ -75,7 +75,33 @@ function update(req, res) {
 };
 
 function modify(req, res) {
-    res.json("Hai modificato parzialmente un elemento")
+    let postUpdated = req.body;
+    const postId = parseInt(req.params.id);
+    let flag = false;
+    for (let i = 0; i < blogPosts.length; i++) {
+        // console.log(blogPosts[i].id, postId)
+        if (blogPosts[i].id === postId) {
+            if(postUpdated.title!=undefined){
+                blogPosts[i].title=postUpdated.title;
+            }
+            if(postUpdated.content!=undefined){
+                blogPosts[i].content=postUpdated.content;
+            }
+            if(postUpdated.image!=undefined){
+                blogPosts[i].image=postUpdated.image;
+            }
+            if(postUpdated.tags!=undefined){
+                blogPosts[i].tags=postUpdated.tags;
+            }
+            // console.log(blogPosts[i]);
+            flag = true
+        }
+    }
+    if (flag === false) {
+        res.sendStatus(404);
+    } else {
+        res.json(postUpdated);
+    }
 };
 
 function destroy(req, res) {
