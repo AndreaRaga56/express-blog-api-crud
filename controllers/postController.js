@@ -1,7 +1,6 @@
 import blogPosts from "../content.js";
 
 function index(req, res) {
-    ciao()
     const filterTag = req.query.tags;
     let postDaMostrare = blogPosts;
     if (filterTag !== undefined) {

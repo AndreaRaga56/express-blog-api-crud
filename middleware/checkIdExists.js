@@ -1,5 +1,6 @@
 import blogPosts from "../content.js"
 
+//Gestore di errori nei parametri
 const checkIdExists = (req, res, next) =>{
     const postId = parseInt(req.params.id);
     let answer = false;
