@@ -10,9 +10,14 @@ app.use(express.static("public"));
 //Importiamo le rotte
 import postRouter from './routers/posts.js';
 
+//Importiamo handleError
+import handleError from './middleware/handleError.js';
+
 //Includiamo le rotte
 app.use("/posts", postRouter);
 
+//Registriamo handleError
+app.use(handleError);
 
 app.listen (port,()=>{
     console.log("Ascolto mode ON");
