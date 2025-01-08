@@ -22,7 +22,6 @@ function show(req, res) {
             break
         }
     }
-
     res.json(answer);
 };
 
@@ -36,7 +35,7 @@ function store(req, res) {
     // console.log(newPost) Con ID
     blogPosts.push(newPost);
 
-    // console.log(blogPosts)
+    console.log(blogPosts)
     ////////////////////////////////////////////// Esempio json di nuovo Post
     // {
     //     "title": "Fotografia per Principianti: Tecniche Base",
@@ -45,7 +44,7 @@ function store(req, res) {
     //     "tags": ["fotografia", "principianti", "tecniche", "arte"]
     // }
 
-    res.json("Hai creato un nuovo elemento")
+    res.json(newPost)
 };
 
 function update(req, res) {

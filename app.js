@@ -2,6 +2,13 @@
 import express from 'express';
 const app = express();
 const port = 3333;
+import cors from 'cors';
+
+// middleware per il CORS
+app.use(cors({
+    origin: 'http://localhost:5173',
+}));
+
 app.use(express.json());
 
 //Cartelle pubblihe
