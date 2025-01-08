@@ -26,6 +26,6 @@ app.use("/posts", postRouter);
 //Registriamo handleError
 app.use(handleError);
 
-app.listen (port,()=>{
+app.listen(port, () => {
     console.log("Ascolto mode ON");
 });

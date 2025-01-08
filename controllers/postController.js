@@ -70,23 +70,16 @@ function update(req, res) {
 
 function modify(req, res) {
     let postUpdated = req.body;
+    // console.log(postUpdated)
     const postId = parseInt(req.params.id);
     for (let i = 0; i < blogPosts.length; i++) {
         // console.log(blogPosts[i].id, postId)
         if (blogPosts[i].id === postId) {
-            if (postUpdated.title != undefined) {
-                blogPosts[i].title = postUpdated.title;
+            blogPosts[i] = {
+                ...blogPosts[i],
+                ...postUpdated,
             }
-            if (postUpdated.content != undefined) {
-                blogPosts[i].content = postUpdated.content;
-            }
-            if (postUpdated.image != undefined) {
-                blogPosts[i].image = postUpdated.image;
-            }
-            if (postUpdated.tags != undefined) {
-                blogPosts[i].tags = postUpdated.tags;
-            }
-            // console.log(blogPosts[i]);
+            // console.log(blogPosts[i])
             break
         }
     }
@@ -103,7 +96,8 @@ function destroy(req, res) {
         }
     }
     blogPosts.splice(indexDaEliminare, 1);
-    // res.json(blogPosts)
+
+    res.json(blogPosts)
 };
 
 export default { index, show, store, update, modify, destroy };
